@@ -2,13 +2,13 @@ extends MeshInstance3D
 
 @onready var mesh_instance: MeshInstance3D = $"."
 @onready var cerceau: MeshInstance3D = $"../Cerceau"
-@onready var camera_3d: Camera3D = $"../../Camera3D"
+var camera_3d
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
 
 func _ready():
+	camera_3d = Globals.camera
 	print(camera_3d)
-	pass
 
 func hollow_old(min: float, max: float, depth: float):
 	var origin = mesh_instance.transform.origin
@@ -57,8 +57,8 @@ func hollow(depth: float, mouse_position: Vector3):
 	var result = PackedVector3Array()
 	for vertex in vertices:
 		var v = vertex.rotated(Vector3(0, 1, 0), self.global_rotation.y)
-		# if  abs(v.y - mouse_position.y) < 0.2:
-		if  mouse_position.distance_to(v) < 0.4:
+		#if abs(v.y - mouse_position.y) < 0.1:
+		if mouse_position.distance_to(v) < 0.4:
 			var new_x = vertex.x + (origin.x - vertex.x) * depth
 			var new_z = vertex.z + (origin.z - vertex.z) * depth
 			result.append(Vector3(new_x, vertex.y, new_z))
@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("click"):
 		var mouse_position = get_mouse_position()
 		if mouse_position != Vector3.ZERO:
-			hollow(3 * delta,mouse_position)
+			hollow(0.8 * delta,mouse_position)
 
 
 func get_mouse_position() -> Vector3:
