@@ -78,7 +78,7 @@ func hollow(depth: float, mouse_position: Vector3):
 	mesh_instance.mesh = new_mesh
 	
 func _physics_process(delta: float) -> void:
-	self.global_rotate(Vector3(0, 1, 0), 12 * delta)
+	self.global_rotate(Vector3(0, 1, 0), 5 * delta)
 	if Input.is_action_pressed("click"):
 		var mouse_position = get_mouse_position()
 		if mouse_position != Vector3.ZERO:
