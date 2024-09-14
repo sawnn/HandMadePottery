@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://b30rrfyjpjcr8"]
+
+[ext_resource type="Script" path="res://scripts/modelage.gd" id="1_02rsk"]
+[ext_resource type="Texture2D" uid="uid://6nr8pclpv07n" path="res://assets/pbr/wavy-sand-bl/wavy-sand_albedo.png" id="1_5i8ig"]
+[ext_resource type="Texture2D" uid="uid://ccg1sm6kl1lbg" path="res://assets/pbr/wavy-sand-bl/wavy-sand_ao.png" id="2_p7cnj"]
+[ext_resource type="Texture2D" uid="uid://4y3iqgio3bhu" path="res://assets/pbr/wavy-sand-bl/wavy-sand_height.png" id="3_cly4k"]
+[ext_resource type="Texture2D" uid="uid://drupgqoyt1jnt" path="res://assets/pbr/wavy-sand-bl/wavy-sand_metallic.png" id="4_y53sy"]
+[ext_resource type="Texture2D" uid="uid://brnj3d5kv2cii" path="res://assets/pbr/wavy-sand-bl/wavy-sand_normal-ogl.png" id="5_n4blw"]
+[ext_resource type="Texture2D" uid="uid://bimds2qgugtgb" path="res://assets/pbr/wavy-sand-bl/wavy-sand_roughness.png" id="6_fhvs4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f4og4"]
+radius = 1.0
+height = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul555"]
+albedo_texture = ExtResource("1_5i8ig")
+metallic = 1.0
+metallic_texture = ExtResource("4_y53sy")
+roughness_texture = ExtResource("6_fhvs4")
+normal_enabled = true
+normal_texture = ExtResource("5_n4blw")
+ao_enabled = true
+ao_texture = ExtResource("2_p7cnj")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_cly4k")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tdhjl"]
+radius = 1.0
+height = 5.0
+
+[node name="Poterie" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.1915)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("CapsuleMesh_f4og4")
+surface_material_override/0 = SubResource("StandardMaterial3D_ul555")
+script = ExtResource("1_02rsk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CapsuleShape3D_tdhjl")
