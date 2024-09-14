@@ -1,0 +1,39 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://b017vernjv51k"
+path="res://.godot/imported/BAKINGSAUCE.otf-d00d2d7fa7360809182cbb98b15b91a8.fontdata"
+
+[deps]
+
+source_file="res://assets/BAKINGSAUCE.otf"
+dest_files=["res://.godot/imported/BAKINGSAUCE.otf-d00d2d7fa7360809182cbb98b15b91a8.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=0
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "Nouvelle configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

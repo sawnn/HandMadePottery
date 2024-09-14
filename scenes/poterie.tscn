@@ -19,7 +19,7 @@
 top_radius = 1.0
 bottom_radius = 1.0
 height = 5.0
-rings = 100
+rings = 200
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul555"]
 albedo_texture = ExtResource("1_5i8ig")

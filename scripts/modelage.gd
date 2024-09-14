@@ -6,9 +6,49 @@ var camera_3d
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
 
+var history: Array = []
+
 func _ready():
 	camera_3d = Globals.camera
 	print(camera_3d)
+
+
+func save_mesh_state():
+	var mesh = mesh_instance.mesh
+	if mesh == null:
+		return
+	var surface_tool = SurfaceTool.new()
+	surface_tool.create_from(mesh, 0)
+
+	var array_mesh = surface_tool.commit()
+	var mesh_data = array_mesh.surface_get_arrays(0)
+
+	var state = {
+		"vertices": mesh_data[Mesh.ARRAY_VERTEX].duplicate(),
+		"normals": mesh_data[Mesh.ARRAY_NORMAL].duplicate(),
+		"uvs": mesh_data[Mesh.ARRAY_TEX_UV].duplicate(),
+		"indices": mesh_data[Mesh.ARRAY_INDEX].duplicate()
+	}
+	history.append(state)
+
+
+func undo():
+	print(history.size())
+	if history.size() == 0:
+		print("No more states to undo.")
+		return
+	print("here")
+	var last_state = history.pop_back()
+	var new_mesh = ArrayMesh.new()
+	var arrays = []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = last_state["vertices"]
+	arrays[Mesh.ARRAY_NORMAL] = last_state["normals"]
+	arrays[Mesh.ARRAY_TEX_UV] = last_state["uvs"]
+	arrays[Mesh.ARRAY_INDEX] = last_state["indices"]
+
+	new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	mesh_instance.mesh = new_mesh
 
 func hollow_old(min: float, max: float, depth: float):
 	var origin = mesh_instance.transform.origin
@@ -79,13 +119,19 @@ func hollow(depth: float, mouse_position: Vector3):
 	
 func _physics_process(delta: float) -> void:
 	self.global_rotate(Vector3(0, 1, 0), 5 * delta)
+	if Input.is_action_just_pressed("click"):
+		save_mesh_state()
 	if Input.is_action_pressed("click"):
 		var mouse_position = get_mouse_position()
 		if mouse_position != Vector3.ZERO:
-			hollow(0.8 * delta,mouse_position)
+			hollow(1.2 * delta,mouse_position)
+	if Input.is_action_just_pressed("undo"):
+		undo()
 
 
 func get_mouse_position() -> Vector3:
+	if camera_3d == null:
+		return Vector3.ZERO
 	var space_state = get_world_3d().direct_space_state
 	
 	var mouse_position = get_viewport().get_mouse_position()

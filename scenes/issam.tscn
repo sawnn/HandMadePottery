@@ -1,14 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmxuhog5njejc"]
+[gd_scene load_steps=2 format=3 uid="uid://dmxuhog5njejc"]
 
 [ext_resource type="PackedScene" uid="uid://b30rrfyjpjcr8" path="res://scenes/poterie.tscn" id="1_0nipm"]
-[ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_k8iyu"]
 
 [node name="Issam" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.32932)
-script = ExtResource("1_k8iyu")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
 
 [node name="Poterie" parent="." instance=ExtResource("1_0nipm")]
