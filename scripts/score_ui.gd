@@ -1,5 +1,6 @@
-extends Control
+extends CanvasLayer
 
+@onready var score_text: Label = $ScoreText
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,13 +12,10 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_start_button_pressed() -> void:
+func _on_next_level_button_pressed() -> void:
 	GameManager.next_level()
 
 
-func _on_options_button_pressed() -> void:
-	print("options")
-
-
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+func _on_main_menu_button_pressed() -> void:
+	GameManager.main_menu_level()
+	

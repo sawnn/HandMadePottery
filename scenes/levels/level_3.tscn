@@ -1,0 +1,201 @@
+[gd_scene load_steps=12 format=3 uid="uid://bf2umflx5qvnv"]
+
+[ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_gdvuj"]
+[ext_resource type="PackedScene" uid="uid://b30rrfyjpjcr8" path="res://scenes/poterie.tscn" id="2_u1v3t"]
+[ext_resource type="PackedScene" uid="uid://b1lobjlql4pdt" path="res://assets/dining_table.glb" id="3_ob16r"]
+[ext_resource type="Script" path="res://scenes/timer.gd" id="4_2gqtu"]
+[ext_resource type="Script" path="res://scripts/score_ui.gd" id="4_rn28v"]
+[ext_resource type="Texture2D" uid="uid://c1brpqs65lrad" path="res://assets/potterystudio.png" id="5_43ttk"]
+[ext_resource type="Texture2D" uid="uid://b8snfcnpayntn" path="res://assets/buttonidle.png" id="5_woagk"]
+[ext_resource type="Texture2D" uid="uid://bqc2cny2nb173" path="res://assets/potterytable.png" id="6_5vusu"]
+[ext_resource type="Texture2D" uid="uid://j1x784uwb8hh" path="res://assets/buttonhover.png" id="6_ujfpm"]
+[ext_resource type="FontFile" uid="uid://b017vernjv51k" path="res://assets/BAKINGSAUCE.otf" id="7_f4kyc"]
+[ext_resource type="Script" path="res://scripts/pause_ui.gd" id="11_1crjm"]
+
+[node name="doug" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.8313, 0, 0)
+fov = 83.0
+script = ExtResource("1_gdvuj")
+
+[node name="Poterie" parent="." instance=ExtResource("2_u1v3t")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.15073, 0, 5.65689)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(4.39316, 0, 0, 0, 4.39316, 0, 0, 0, 4.39316, -1.11592, -7.27673, -1.56979)
+visible = false
+
+[node name="dining_table" parent="StaticBody3D" instance=ExtResource("3_ob16r")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+offset_right = 43.0
+offset_bottom = 23.0
+text = "timer"
+
+[node name="ScoreUi" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("4_rn28v")
+
+[node name="ScoreText" type="Label" parent="ScoreUi"]
+offset_left = 643.0
+offset_top = 93.0
+offset_right = 871.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "Score: 0"
+vertical_alignment = 1
+
+[node name="NextLevelButton" type="TextureButton" parent="ScoreUi"]
+offset_left = 988.0
+offset_top = 88.0
+offset_right = 1588.0
+offset_bottom = 388.0
+scale = Vector2(1.00976, 0.399878)
+texture_normal = ExtResource("5_woagk")
+texture_hover = ExtResource("6_ujfpm")
+
+[node name="Label" type="Label" parent="ScoreUi/NextLevelButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.744
+offset_top = -87.481
+offset_right = 43.2558
+offset_bottom = -26.481
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.71304, 3.20067)
+theme_override_fonts/font = ExtResource("7_f4kyc")
+theme_override_font_sizes/font_size = 50
+text = "Next Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="ScoreUi"]
+offset_left = 979.0
+offset_top = 253.0
+offset_right = 1579.0
+offset_bottom = 553.0
+scale = Vector2(1.00976, 0.399878)
+texture_normal = ExtResource("5_woagk")
+texture_hover = ExtResource("6_ujfpm")
+
+[node name="Label" type="Label" parent="ScoreUi/MainMenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.831
+offset_top = -87.481
+offset_right = 48.1688
+offset_bottom = -26.481
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.71304, 3.20067)
+theme_override_fonts/font = ExtResource("7_f4kyc")
+theme_override_font_sizes/font_size = 50
+text = "Main Menu
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+script = ExtResource("4_2gqtu")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-6.79379e-08, 0, 1.55424, 0, 1.55424, 0, -1.55424, 0, -6.79379e-08, -8, 0, 0)
+texture = ExtResource("5_43ttk")
+
+[node name="table" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 0)
+texture = ExtResource("6_5vusu")
+
+[node name="PauseUi" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("11_1crjm")
+
+[node name="Panel" type="Panel" parent="PauseUi"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="TextureButton" parent="PauseUi"]
+offset_left = 500.0
+offset_top = 300.0
+offset_right = 1100.0
+offset_bottom = 600.0
+scale = Vector2(1.00976, 0.399878)
+texture_normal = ExtResource("5_woagk")
+texture_hover = ExtResource("6_ujfpm")
+
+[node name="Label" type="Label" parent="PauseUi/ResumeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.711
+offset_top = -87.481
+offset_right = 14.2892
+offset_bottom = -26.481
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.71304, 3.20067)
+theme_override_fonts/font = ExtResource("7_f4kyc")
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="PauseUi"]
+offset_left = 500.0
+offset_top = 448.0
+offset_right = 1100.0
+offset_bottom = 748.0
+scale = Vector2(1.00976, 0.399878)
+texture_normal = ExtResource("5_woagk")
+texture_hover = ExtResource("6_ujfpm")
+
+[node name="Label" type="Label" parent="PauseUi/MainMenuButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.711
+offset_top = -87.481
+offset_right = 14.2892
+offset_bottom = -26.481
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.71304, 3.20067)
+theme_override_fonts/font = ExtResource("7_f4kyc")
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ScoreUi/NextLevelButton" to="ScoreUi" method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="ScoreUi/MainMenuButton" to="ScoreUi" method="_on_main_menu_button_pressed"]
+[connection signal="timeout" from="Timer" to="Camera3D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
+[connection signal="pressed" from="PauseUi/ResumeButton" to="PauseUi" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseUi/MainMenuButton" to="PauseUi" method="_on_main_menu_button_pressed"]
