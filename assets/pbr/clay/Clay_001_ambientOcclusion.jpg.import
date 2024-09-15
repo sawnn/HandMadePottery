@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn2eqc8e4eow4"
-path.s3tc="res://.godot/imported/dining_table_Wood052_1K-JPG_Color.jpg-269a1bbbefaf063a058238f86671007f.s3tc.ctex"
+uid="uid://clt33nj0iax6m"
+path.s3tc="res://.godot/imported/Clay_001_ambientOcclusion.jpg-b8dfed1280fe1430f9f05005ad8d27d7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "892ef27acf3365eabf9b7b5a8765cf99"
-}
 
 [deps]
 
-source_file="res://assets/dining_table_Wood052_1K-JPG_Color.jpg"
-dest_files=["res://.godot/imported/dining_table_Wood052_1K-JPG_Color.jpg-269a1bbbefaf063a058238f86671007f.s3tc.ctex"]
+source_file="res://assets/pbr/clay/Clay_001_ambientOcclusion.jpg"
+dest_files=["res://.godot/imported/Clay_001_ambientOcclusion.jpg-b8dfed1280fe1430f9f05005ad8d27d7.s3tc.ctex"]
 
 [params]
 

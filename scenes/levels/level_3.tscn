@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf2umflx5qvnv"]
+[gd_scene load_steps=20 format=3 uid="uid://bf2umflx5qvnv"]
 
 [ext_resource type="Script" path="res://scenes/camera_3d.gd" id="1_gdvuj"]
 [ext_resource type="PackedScene" uid="uid://b30rrfyjpjcr8" path="res://scenes/poterie.tscn" id="2_u1v3t"]
@@ -11,6 +11,25 @@
 [ext_resource type="Texture2D" uid="uid://j1x784uwb8hh" path="res://assets/buttonhover.png" id="6_ujfpm"]
 [ext_resource type="FontFile" uid="uid://b017vernjv51k" path="res://assets/BAKINGSAUCE.otf" id="7_f4kyc"]
 [ext_resource type="Script" path="res://scripts/pause_ui.gd" id="11_1crjm"]
+[ext_resource type="ArrayMesh" uid="uid://rtitp4blrsuk" path="res://assets/object/meshes/Pion_Mesh_0_007.res" id="12_6ji2o"]
+[ext_resource type="Texture2D" uid="uid://csw0k76qfs53c" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_albedo.png" id="12_s7d65"]
+[ext_resource type="Texture2D" uid="uid://cr5bamvh8vlih" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_ao.png" id="13_06q87"]
+[ext_resource type="Texture2D" uid="uid://cgxorbbd74ms4" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_height.png" id="14_a6m5h"]
+[ext_resource type="Texture2D" uid="uid://dfcnpdjv5brvs" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_metallic.png" id="15_0q3lx"]
+[ext_resource type="Texture2D" uid="uid://cvi57ja3042j5" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_normal-ogl.png" id="16_bpa4v"]
+[ext_resource type="Texture2D" uid="uid://b10l2oa8efnuk" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_roughness.png" id="17_snj1g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pncp"]
+albedo_texture = ExtResource("12_s7d65")
+metallic = 1.0
+metallic_texture = ExtResource("15_0q3lx")
+roughness_texture = ExtResource("17_snj1g")
+normal_enabled = true
+normal_texture = ExtResource("16_bpa4v")
+ao_enabled = true
+ao_texture = ExtResource("13_06q87")
+heightmap_enabled = true
+heightmap_texture = ExtResource("14_a6m5h")
 
 [node name="doug" type="Node3D"]
 
@@ -115,7 +134,7 @@ text = "Score: 0"
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 script = ExtResource("4_2gqtu")
@@ -196,6 +215,11 @@ theme_override_font_sizes/font_size = 50
 text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.81652)
+mesh = ExtResource("12_6ji2o")
+surface_material_override/0 = SubResource("StandardMaterial3D_0pncp")
 
 [connection signal="pressed" from="ScoreUi/NextLevelButton" to="ScoreUi" method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="ScoreUi/MainMenuButton" to="ScoreUi" method="_on_main_menu_button_pressed"]

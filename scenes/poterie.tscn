@@ -1,12 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://b30rrfyjpjcr8"]
+[gd_scene load_steps=21 format=3 uid="uid://b30rrfyjpjcr8"]
 
 [ext_resource type="Script" path="res://scripts/modelage.gd" id="1_02rsk"]
-[ext_resource type="Texture2D" uid="uid://6nr8pclpv07n" path="res://assets/pbr/wavy-sand-bl/wavy-sand_albedo.png" id="1_5i8ig"]
-[ext_resource type="Texture2D" uid="uid://ccg1sm6kl1lbg" path="res://assets/pbr/wavy-sand-bl/wavy-sand_ao.png" id="2_p7cnj"]
-[ext_resource type="Texture2D" uid="uid://4y3iqgio3bhu" path="res://assets/pbr/wavy-sand-bl/wavy-sand_height.png" id="3_cly4k"]
-[ext_resource type="Texture2D" uid="uid://drupgqoyt1jnt" path="res://assets/pbr/wavy-sand-bl/wavy-sand_metallic.png" id="4_y53sy"]
-[ext_resource type="Texture2D" uid="uid://brnj3d5kv2cii" path="res://assets/pbr/wavy-sand-bl/wavy-sand_normal-ogl.png" id="5_n4blw"]
-[ext_resource type="Texture2D" uid="uid://bimds2qgugtgb" path="res://assets/pbr/wavy-sand-bl/wavy-sand_roughness.png" id="6_fhvs4"]
 [ext_resource type="Texture2D" uid="uid://csw0k76qfs53c" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_albedo.png" id="8_v6m4i"]
 [ext_resource type="Texture2D" uid="uid://cr5bamvh8vlih" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_ao.png" id="9_1pequ"]
 [ext_resource type="Texture2D" uid="uid://cgxorbbd74ms4" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_height.png" id="10_tfyly"]
@@ -14,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cvi57ja3042j5" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_normal-ogl.png" id="12_ghfk5"]
 [ext_resource type="Texture2D" uid="uid://b10l2oa8efnuk" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_roughness.png" id="13_iaai0"]
 [ext_resource type="Script" path="res://scenes/mesh_instance_3d.gd" id="14_m0cyw"]
+[ext_resource type="Texture2D" uid="uid://drow5271t5uqb" path="res://assets/pbr/clay/Clay_001_basecolor.jpg" id="15_p0njo"]
+[ext_resource type="Texture2D" uid="uid://clt33nj0iax6m" path="res://assets/pbr/clay/Clay_001_ambientOcclusion.jpg" id="16_6s66a"]
+[ext_resource type="Texture2D" uid="uid://cngahy77gjs7n" path="res://assets/pbr/clay/Clay_001_normal.jpg" id="17_24yx3"]
+[ext_resource type="Texture2D" uid="uid://virt728jg8ff" path="res://assets/pbr/clay/Clay_001_roughness.jpg" id="18_uwnrk"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qhkpn"]
 top_radius = 1.0
@@ -21,17 +19,13 @@ bottom_radius = 1.0
 height = 5.0
 rings = 200
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul555"]
-albedo_texture = ExtResource("1_5i8ig")
-metallic = 1.0
-metallic_texture = ExtResource("4_y53sy")
-roughness_texture = ExtResource("6_fhvs4")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2dxw"]
+albedo_color = Color(0.956863, 0.886275, 0.839216, 1)
+roughness_texture = ExtResource("18_uwnrk")
 normal_enabled = true
-normal_texture = ExtResource("5_n4blw")
+normal_texture = ExtResource("17_24yx3")
 ao_enabled = true
-ao_texture = ExtResource("2_p7cnj")
-heightmap_enabled = true
-heightmap_texture = ExtResource("3_cly4k")
+ao_texture = ExtResource("16_6s66a")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dlu6p"]
 height = 5.0
@@ -55,6 +49,23 @@ ao_texture = ExtResource("9_1pequ")
 heightmap_enabled = true
 heightmap_texture = ExtResource("10_tfyly")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yhrsc"]
+angle_min = -360.0
+angle_max = 360.0
+spread = 62.095
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kf74f"]
+albedo_texture = ExtResource("15_p0njo")
+roughness_texture = ExtResource("18_uwnrk")
+normal_enabled = true
+normal_texture = ExtResource("17_24yx3")
+ao_enabled = true
+ao_texture = ExtResource("16_6s66a")
+
+[sub_resource type="BoxMesh" id="BoxMesh_4djxe"]
+material = SubResource("StandardMaterial3D_kf74f")
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="Poterie" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
@@ -63,7 +74,7 @@ gravity_scale = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("CylinderMesh_qhkpn")
-surface_material_override/0 = SubResource("StandardMaterial3D_ul555")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2dxw")
 script = ExtResource("1_02rsk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
@@ -74,3 +85,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.54427, 0)
 mesh = SubResource("CylinderMesh_n1ot5")
 surface_material_override/0 = SubResource("StandardMaterial3D_ubvwe")
 script = ExtResource("14_m0cyw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_yhrsc")
+draw_pass_1 = SubResource("BoxMesh_4djxe")

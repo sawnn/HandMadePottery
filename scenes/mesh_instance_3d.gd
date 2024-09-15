@@ -7,4 +7,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not GameManager.is_pottery_active:
+		return
 	self.global_rotate(Vector3(0, 1, 0), 5 * delta)

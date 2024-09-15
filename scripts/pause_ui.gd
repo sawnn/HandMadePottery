@@ -18,5 +18,6 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_resume_button_pressed() -> void:
+	GameManager.start_pottery()
 	timer.paused = false
 	self.visible = false

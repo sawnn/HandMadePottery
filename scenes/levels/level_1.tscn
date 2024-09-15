@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx8hnlietw070"]
+[gd_scene load_steps=20 format=3 uid="uid://bx8hnlietw070"]
 
 [ext_resource type="PackedScene" uid="uid://b30rrfyjpjcr8" path="res://scenes/poterie.tscn" id="1_0o0mr"]
 [ext_resource type="Texture2D" uid="uid://c1brpqs65lrad" path="res://assets/potterystudio.png" id="1_ugltp"]
@@ -11,6 +11,25 @@
 [ext_resource type="Texture2D" uid="uid://bqc2cny2nb173" path="res://assets/potterytable.png" id="6_lo3dt"]
 [ext_resource type="FontFile" uid="uid://b017vernjv51k" path="res://assets/BAKINGSAUCE.otf" id="6_t0t5v"]
 [ext_resource type="Script" path="res://scripts/pause_ui.gd" id="11_0bw6f"]
+[ext_resource type="ArrayMesh" uid="uid://cu80rg8q3jtuo" path="res://assets/object/meshes/Batte_Mesh_0.res" id="12_hh8bs"]
+[ext_resource type="Texture2D" uid="uid://csw0k76qfs53c" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_albedo.png" id="13_gek0e"]
+[ext_resource type="Texture2D" uid="uid://cr5bamvh8vlih" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_ao.png" id="14_lby40"]
+[ext_resource type="Texture2D" uid="uid://cgxorbbd74ms4" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_height.png" id="15_0lhv7"]
+[ext_resource type="Texture2D" uid="uid://dfcnpdjv5brvs" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_metallic.png" id="16_q363d"]
+[ext_resource type="Texture2D" uid="uid://cvi57ja3042j5" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_normal-ogl.png" id="17_7m8i4"]
+[ext_resource type="Texture2D" uid="uid://b10l2oa8efnuk" path="res://assets/pbr/subtle-grained-wood-bl/subtle-grained-wood_roughness.png" id="18_7gpn8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnec1"]
+albedo_texture = ExtResource("13_gek0e")
+metallic = 1.0
+metallic_texture = ExtResource("16_q363d")
+roughness_texture = ExtResource("18_7gpn8")
+normal_enabled = true
+normal_texture = ExtResource("17_7m8i4")
+ao_enabled = true
+ao_texture = ExtResource("14_lby40")
+heightmap_enabled = true
+heightmap_texture = ExtResource("15_0lhv7")
 
 [node name="doug" type="Node3D"]
 
@@ -115,7 +134,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 script = ExtResource("4_gjoaf")
@@ -196,6 +215,11 @@ theme_override_font_sizes/font_size = 50
 text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.81652)
+mesh = ExtResource("12_hh8bs")
+surface_material_override/0 = SubResource("StandardMaterial3D_xnec1")
 
 [connection signal="pressed" from="ScoreUi/NextLevelButton" to="ScoreUi" method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="ScoreUi/MainMenuButton" to="ScoreUi" method="_on_main_menu_button_pressed"]

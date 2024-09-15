@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlo82r5fh2em8"
-path.s3tc="res://.godot/imported/dining_table_Wood052_1K-JPG_NormalGL.jpg-244e07db092d5a995d15852ef7df16b2.s3tc.ctex"
+uid="uid://cngahy77gjs7n"
+path.s3tc="res://.godot/imported/Clay_001_normal.jpg-05315956fbade7f02d49c96cc198def3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "6bc5e7b929c212e55dc906763432dcf5"
-}
 
 [deps]
 
-source_file="res://assets/dining_table_Wood052_1K-JPG_NormalGL.jpg"
-dest_files=["res://.godot/imported/dining_table_Wood052_1K-JPG_NormalGL.jpg-244e07db092d5a995d15852ef7df16b2.s3tc.ctex"]
+source_file="res://assets/pbr/clay/Clay_001_normal.jpg"
+dest_files=["res://.godot/imported/Clay_001_normal.jpg-05315956fbade7f02d49c96cc198def3.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/dining_table_Wood052_1K-JPG_NormalGL.jpg"
+roughness/src_normal="res://assets/pbr/clay/Clay_001_normal.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
