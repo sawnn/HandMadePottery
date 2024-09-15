@@ -86,14 +86,6 @@ func hollow(depth: float, mouse_position: Vector3, spread = 0):
 			var new_z = vertex.z + (origin.z - vertex.z) * new_depth
 			removed += depth / 2
 			result.append(Vector3(new_x, vertex.y, new_z))
-		elif abs(v.y - mouse_position.y) < 0.35:
-			if first_vertex == null:
-				first_vertex = i
-			last_vertex = i
-			var new_x = vertex.x + (origin.x - vertex.x) * new_depth / 2
-			var new_z = vertex.z + (origin.z - vertex.z) * new_depth / 2
-			removed += depth / 4
-			result.append(Vector3(new_x, vertex.y, new_z))
 		else:
 			result.append(Vector3(vertex.x, vertex.y, vertex.z))
 		i += 1

@@ -134,7 +134,7 @@ text = "Score: 0"
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 35.0
 one_shot = true
 autostart = true
 script = ExtResource("4_2gqtu")

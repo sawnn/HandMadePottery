@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxfko86xw3bsj"]
 
-[ext_resource type="AudioStream" uid="uid://b42er45q2j7e" path="res://assets/musics/Monkeys Spinning Monkeys (Kevin MacLeod) - Background Music (HD).mp3" id="1_v2pxu"]
+[ext_resource type="AudioStream" uid="uid://bin6btyf56cpr" path="res://assets/musics/fancy_seeing_you_hereMP3.mp3" id="1_1njcd"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_v2pxu")
+stream = ExtResource("1_1njcd")
 autoplay = true
