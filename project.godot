@@ -18,11 +18,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+BGMusic="*res://scenes/BgMusic.tscn"
 
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+
+[global_group]
+
+Audio=""
 
 [input]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b42er45q2j7e"
+path="res://.godot/imported/Monkeys Spinning Monkeys (Kevin MacLeod) - Background Music (HD).mp3-c94ec2731263be0c6dc6d4c6cabac9d2.mp3str"
+
+[deps]
+
+source_file="res://assets/musics/Monkeys Spinning Monkeys (Kevin MacLeod) - Background Music (HD).mp3"
+dest_files=["res://.godot/imported/Monkeys Spinning Monkeys (Kevin MacLeod) - Background Music (HD).mp3-c94ec2731263be0c6dc6d4c6cabac9d2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

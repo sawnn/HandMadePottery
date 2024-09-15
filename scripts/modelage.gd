@@ -5,7 +5,6 @@ extends MeshInstance3D
 @onready var gpu_particles_3d: GPUParticles3D = $"../../GPUParticles3D"
 var rng = RandomNumberGenerator.new()
 
-
 var camera_3d
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
@@ -54,6 +53,8 @@ func undo():
 
 	new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	mesh_instance.mesh = new_mesh
+	collision_shape_3d.shape = new_mesh.create_trimesh_shape()
+
 
 func hollow(depth: float, mouse_position: Vector3, spread = 0):
 	var origin = mesh_instance.transform.origin
@@ -84,6 +85,14 @@ func hollow(depth: float, mouse_position: Vector3, spread = 0):
 			var new_x = vertex.x + (origin.x - vertex.x) * new_depth
 			var new_z = vertex.z + (origin.z - vertex.z) * new_depth
 			removed += depth / 2
+			result.append(Vector3(new_x, vertex.y, new_z))
+		elif abs(v.y - mouse_position.y) < 0.35:
+			if first_vertex == null:
+				first_vertex = i
+			last_vertex = i
+			var new_x = vertex.x + (origin.x - vertex.x) * new_depth / 2
+			var new_z = vertex.z + (origin.z - vertex.z) * new_depth / 2
+			removed += depth / 4
 			result.append(Vector3(new_x, vertex.y, new_z))
 		else:
 			result.append(Vector3(vertex.x, vertex.y, vertex.z))
@@ -134,7 +143,7 @@ func _physics_process(delta: float) -> void:
 		if mouse_position != Vector3.ZERO:
 			gpu_particles_3d.emitting = true
 			gpu_particles_3d.transform.origin = Vector3(mouse_position.x, mouse_position.y, mouse_position.z+0.4)
-			hollow(1 * delta,mouse_position, spread)
+			hollow(0.6 * delta,mouse_position, spread)
 		listen_mouse_velocity = true
 	if Input.is_action_just_pressed("undo"):
 		undo()
@@ -142,8 +151,6 @@ func _physics_process(delta: float) -> void:
 		gpu_particles_3d.emitting = false
 		listen_mouse_velocity = false
 		collision_shape_3d.shape = mesh_instance.mesh.create_trimesh_shape()
-	if Input.is_action_just_pressed("undo"):
-		undo()
 
 func get_mouse_position() -> Vector3:
 	if camera_3d == null:
@@ -162,4 +169,8 @@ func get_mouse_position() -> Vector3:
 		return intersection.position
 	return Vector3.ZERO
 	
+
+func _on_start_button_pressed() -> void:
+	print("okok")
+	undo()
 	

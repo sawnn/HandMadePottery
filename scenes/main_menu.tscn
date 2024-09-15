@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsqomysbmr7ge"]
+[gd_scene load_steps=13 format=3 uid="uid://dsqomysbmr7ge"]
 
 [ext_resource type="FontFile" uid="uid://b017vernjv51k" path="res://assets/BAKINGSAUCE.otf" id="1_lkfm5"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_w2p3a"]
 [ext_resource type="Texture2D" uid="uid://c1brpqs65lrad" path="res://assets/potterystudio.png" id="2_ch2nv"]
 [ext_resource type="Texture2D" uid="uid://b8snfcnpayntn" path="res://assets/buttonidle.png" id="2_fqax2"]
 [ext_resource type="Texture2D" uid="uid://j1x784uwb8hh" path="res://assets/buttonhover.png" id="3_qysl0"]
+[ext_resource type="PackedScene" uid="uid://bxfko86xw3bsj" path="res://scenes/BgMusic.tscn" id="6_xljq2"]
+[ext_resource type="AudioStream" uid="uid://bqx0uajvmok11" path="res://assets/musics/It Was Just A Dream.mp3" id="7_8wnxr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pn3ep"]
 texture = ExtResource("2_ch2nv")
@@ -217,6 +219,9 @@ theme_override_font_sizes/font_size = 50
 text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("6_xljq2")]
+stream = ExtResource("7_8wnxr")
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]

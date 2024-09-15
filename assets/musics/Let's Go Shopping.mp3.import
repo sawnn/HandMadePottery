@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvldaqugubnyl"
+path="res://.godot/imported/Let's Go Shopping.mp3-f6d1dc8b2004b9376402ab0dc5c73f0a.mp3str"
+
+[deps]
+
+source_file="res://assets/musics/Let's Go Shopping.mp3"
+dest_files=["res://.godot/imported/Let's Go Shopping.mp3-f6d1dc8b2004b9376402ab0dc5c73f0a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
