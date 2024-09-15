@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsqomysbmr7ge"]
+[gd_scene load_steps=11 format=3 uid="uid://dsqomysbmr7ge"]
 
 [ext_resource type="FontFile" uid="uid://b017vernjv51k" path="res://assets/BAKINGSAUCE.otf" id="1_lkfm5"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_w2p3a"]
+[ext_resource type="Texture2D" uid="uid://c1brpqs65lrad" path="res://assets/potterystudio.png" id="2_ch2nv"]
 [ext_resource type="Texture2D" uid="uid://b8snfcnpayntn" path="res://assets/buttonidle.png" id="2_fqax2"]
 [ext_resource type="Texture2D" uid="uid://j1x784uwb8hh" path="res://assets/buttonhover.png" id="3_qysl0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsbn8"]
-bg_color = Color(0.68872, 0.577898, 0.469343, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pn3ep"]
+texture = ExtResource("2_ch2nv")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bkw0i"]
 
@@ -47,7 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_gsbn8")
+theme_override_styles/panel = SubResource("StyleBoxTexture_pn3ep")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
@@ -112,20 +113,17 @@ text = "Exit"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -189.0
-offset_top = -249.0
-offset_right = 189.0
-offset_bottom = -180.0
+offset_left = -314.0
+offset_top = 100.0
+offset_right = 315.0
+offset_bottom = 227.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_lkfm5")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 70
 text = "Handmade Pottery"
 horizontal_alignment = 1
 vertical_alignment = 1

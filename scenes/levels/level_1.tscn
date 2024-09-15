@@ -33,8 +33,11 @@ visible = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer"]
-offset_right = 43.0
-offset_bottom = 23.0
+offset_left = 69.0
+offset_right = 205.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("6_t0t5v")
+theme_override_font_sizes/font_size = 50
 text = "timer"
 
 [node name="ScoreUi" type="CanvasLayer" parent="."]
@@ -47,6 +50,7 @@ offset_top = 93.0
 offset_right = 871.0
 offset_bottom = 176.0
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_t0t5v")
 theme_override_font_sizes/font_size = 60
 text = "Score: 0"
 vertical_alignment = 1

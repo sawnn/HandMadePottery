@@ -3,6 +3,7 @@ extends Timer
 @onready var timer_label: Label = $"../CanvasLayer/TimerLabel"
 @onready var score_ui: CanvasLayer = $"../ScoreUi"
 @onready var pause_ui: CanvasLayer = $"../PauseUi"
+@onready var score_text: Label = $"../ScoreUi/ScoreText"
 
 
 func _process(delta: float) -> void:
@@ -23,4 +24,5 @@ func _on_timeout() -> void:
 	print("timer stp")
 	if (score_ui):
 		score_ui.visible = true
+		score_text.text = "Score: 100"
 	GameManager.stop_pottery()

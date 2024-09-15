@@ -10,6 +10,8 @@ var levels = [
 ]
 @onready var score_text: Label = $ScoreUi/ScoreText
 
+var score = 0
+
 var current_level = 0
 func _ready() -> void:
 	start_pottery()
@@ -47,7 +49,8 @@ func main_menu_level():
 func next_level():
 	current_level += 1
 	if current_level >= levels.size():
-		print("niveau fini")
+		current_level = 1
+		load_level(1)
 	else:
 		load_level(current_level)
 
